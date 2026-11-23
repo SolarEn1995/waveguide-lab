@@ -478,6 +478,9 @@ ol.steps4 svg{display:block;width:100%;height:auto;max-height:76px}
 ol.steps4 span{font-size:14px;line-height:1.6}
 ol.steps4 b{display:block;font-size:14.5px;color:var(--good)}
 .foot .scope{display:block;margin-top:6px}
+.kind-bar{padding:12px 14px}
+.kind-bar .btns button{flex:1 1 220px;min-height:46px;font-size:15px;font-weight:700}
+section.ch.touring .kind-bar{display:none}
 /* 修正版：桌機 3D 區跟著捲動（避免左下空白）；手機刻度標籤錯開避免重疊 */
 @media(min-width:920px){section.ch:not(.touring) #stage1{position:sticky;top:72px}}
 .ref i{font-style:normal}
@@ -661,8 +664,12 @@ ol.steps4 b{display:block;font-size:14.5px;color:var(--good)}
 
 <!-- 01 Exploded View -->
 <section class="ch" id="ch1">
-  <div class="ch-head"><span class="no">01</span><h2>拆開 Meta Ray-Ban Display</h2>
-    <p>只有右眼鏡片內建光波導。拖曳旋轉、調整拆解程度，洋紅到青藍色的流動光點就是畫面的光路：LCoS 光機 → 入光反射鏡 → 波導玻璃（全反射）→ 部分反射鏡陣列 → 眼睛。第一次看，建議先按「開始導覽」跟著 5 個步驟走一遍。</p></div>
+  <div class="ch-head"><span class="no">01</span><h2>拆開智慧眼鏡：反射式 vs 碳化矽繞射式</h2>
+    <p>上方可以切換兩種眼鏡：已量產的 Ray-Ban Display（反射式玻璃波導），以及參考 Orion 的碳化矽繞射式波導（示意）。拖曳旋轉、調整拆解程度，洋紅到青藍色的流動光點就是畫面的光路。第一次看，建議先按「開始導覽」跟著 5 個步驟走一遍。</p></div>
+  <div class="card kind-bar">
+    <div class="btns" id="kind1" role="group" aria-label="選擇要拆解的眼鏡"><button type="button" data-k="rb" class="on" aria-pressed="true">Ray-Ban Display・反射式玻璃</button><button type="button" data-k="sic" aria-pressed="false">碳化矽・繞射式（示意）</button></div>
+    <p class="m" id="kindNote" style="margin-top:8px">實際產品的拆解（依 iFixit 等拆解報告）：光在玻璃裡全反射，靠一排斜放的部分反射鏡導出。</p>
+  </div>
   <div class="grid2">
     <div class="stage stage3d" id="stage1">
       <div id="vp">
@@ -1093,7 +1100,7 @@ ol.steps4 b{display:block;font-size:14.5px;color:var(--good)}
     <template class="ex">碳化矽是可見光區折射率最高的材料之一（約 2.7），能把更大範圍的畫面角度關在鏡片裡，讓 Orion 達到約 70° 的視野，也大幅減少彩虹紋。代價是長晶與加工昂貴，目前仍是原型機。</template>
   </div>
   <div class="foot">
-    <b>標示與資料說明</b>：頁面中標註「示意」的成分比例、晶格排列與光路動畫為教學輔助用途，非廠商實際配方。Ray-Ban Display 的波導玻璃牌號與精確折射率目前未公開。3D 模型為程序化示意，非廠商 CAD；類比與動畫僅供教學理解。<span class="scope"><b>範圍說明</b>：本頁聚焦兩個代表案例：Ray-Ban Display 的反射式玻璃波導，以及 Orion 的繞射式碳化矽波導。AR 顯示還有其他做法（如體積全像光柵波導、birdbath 光學等），也有許多智慧眼鏡沒有鏡片顯示，本頁未涵蓋。</span>
+    <b>標示與資料說明</b>：頁面中標註「示意」的成分比例、晶格排列與光路動畫為教學輔助用途，非廠商實際配方。Ray-Ban Display 的波導玻璃牌號與精確折射率目前未公開。3D 模型為程序化示意，非廠商 CAD；碳化矽版是參考 Orion 公開資訊與研究論文的示意，不是實機拆解；類比與動畫僅供教學理解。<span class="scope"><b>範圍說明</b>：本頁聚焦兩個代表案例：Ray-Ban Display 的反射式玻璃波導，以及 Orion 的繞射式碳化矽波導。AR 顯示還有其他做法（如體積全像光柵波導、birdbath 光學等），也有許多智慧眼鏡沒有鏡片顯示，本頁未涵蓋。</span>
     <ol>
       <li><a href="https://www.ifixit.com/News/113543" target="_blank" rel="noopener">iFixit：Meta Ray-Ban Display 拆解報告</a></li>
       <li><a href="https://www.techinsights.com/blog/meta-ray-ban-display-teardown-reveals-more-meets-eye" target="_blank" rel="noopener">TechInsights：拆解技術摘要</a></li>
@@ -1101,6 +1108,7 @@ ol.steps4 b{display:block;font-size:14.5px;color:var(--good)}
       <li><a href="https://www.schott.com/en-au/products/schott-reflective-waveguides-p1001190" target="_blank" rel="noopener">SCHOTT：幾何反射式波導</a>・<a href="https://www.schott.com/en-nz/products/schott-realview/technical-details" target="_blank" rel="noopener">RealView 高折射率玻璃規格</a></li>
       <li><a href="https://www.meta.com/blog/orion-silicon-carbide-waveguides-ar-glasses-large-field-of-view/" target="_blank" rel="noopener">Meta：Orion 碳化矽波導技術解析</a>・<a href="https://www.meta.com/emerging-tech/orion/silicon-carbide/" target="_blank" rel="noopener">碳化矽材料專頁</a></li>
       <li><a href="https://www.coherent.com/blog/ar-displays-high-index-material.html" target="_blank" rel="noopener">Coherent：高折射率材料與 AR 視野關係</a></li>
+      <li><a href="https://www.meta.com/emerging-tech/orion/" target="_blank" rel="noopener">Meta：Orion 產品頁（microLED 投影機、鎂合金鏡框、運算模組）</a>・<a href="https://heise.de/-10515148" target="_blank" rel="noopener">heise：Orion 深入解析</a>・<a href="https://www.uploadvr.com/meta-connect-2024-orion-prototype-ar-glasses/" target="_blank" rel="noopener">UploadVR：Orion 規格</a></li>
       <li><a href="https://arxiv.org/abs/2409.14487" target="_blank" rel="noopener">研究論文：單層全彩、無彩虹紋的碳化矽繞射波導（Chen 等，arXiv 2409.14487）</a></li>
       <li><a href="https://arxiv.org/abs/2601.04370" target="_blank" rel="noopener">研究論文：幾何式波導的鍍膜最佳化（KAUST／Meta，arXiv 2601.04370）</a></li>
       <li><a href="https://www.globalspec.com/reference/25137/203279/chapter-2-optical-and-paramagnetic-properties" target="_blank" rel="noopener">Properties of Silicon Carbide：SiC 的光吸收與摻氮顏色來源</a></li>
@@ -5545,12 +5553,60 @@ var TOUR=[
   like:'就像晚上透過窗戶看外面：玻璃上同時映著屋裡的燈，兩個影像疊在一起。'}
 ];
 
+/* ---------- 碳化矽繞射式（示意，參考 Meta Orion 與研究論文）---------- */
+var PARTS_SIC=[
+ {name:'外側保護層',col:'#8b5cf6',spec:'硬塗層＋抗反射膜（示意）',
+  desc:'朝外的保護層：防刮、減少反光，也保護表面的奈米光柵。研究論文的做法是先用硬塗層和抗反射膜把波導夾住，再雷射切割成鏡片形狀（Meta 未公開 Orion 的實際製程）。'},
+ {name:'碳化矽波導板',col:'#059669',spec:'光學級碳化矽・n ≈ 2.7・單片全彩',
+  desc:'這副眼鏡的核心。光在板子裡靠全反射前進；碳化矽折射率約 2.7，比玻璃 1.8 高很多，能關住更大範圍的畫面角度，Orion 才做得到約 70° 視野。用的是高純度光學級晶圓，不是電動車用的摻氮晶圓。',
+  note:'和 Ray-Ban 對照：Ray-Ban 的「波導玻璃」換成這片碳化矽板，「斜放的反射鏡」換成刻在表面的光柵。'},
+ {name:'入口光柵',col:'#e11d48',spec:'奈米斜向光柵・負責「進」',
+  desc:'刻在碳化矽板表面的奈米斜紋，把投影機的光「掰」成很斜的角度，斜到能在板子裡全反射。Meta 說奈米壓印在這麼高折射率的基板上效果不好，所以碳化矽改用斜向蝕刻。'},
+ {name:'擴展光柵',col:'#d97706',spec:'轉折光柵・負責「橫向展開」（示意）',
+  desc:'光沿著這條光柵往旁邊走，每碰一次就有一部分被轉向下方，畫面在水平方向被複製展開。這是繞射式波導常見的三區設計之一（入口、擴展、出口）；Orion 實際的光柵佈局 Meta 沒有公開。'},
+ {name:'出口光柵',col:'#0284c7',spec:'大面積光柵・負責「出」',
+  desc:'往下走的光每碰一次出口光柵，就有一部分被送出板子、射向眼睛，畫面在垂直方向也展開。所以眼睛上下左右移動，都還看得到完整畫面。外界白光碰到這裡也可能產生彩虹紋。'},
+ {name:'內側保護層',col:'#c026d3',spec:'硬塗層＋抗反射膜（示意）',
+  desc:'朝眼睛的保護層，和外側那層一起把碳化矽板與光柵夾在中間。'},
+ {name:'microLED 投影機',col:'#db2777',spec:'microLED・每個像素自己發光',
+  desc:'鏡腿前端的微型投影機。microLED 每個像素自己發光，不用像 LCoS 那樣另外打光，體積更小。據 heise 報導，投影機本身亮度高達數十萬 nits，經過波導後到眼睛只剩約 300–400 nits，可見光在波導裡損失很多。解析度約每度 13 像素（Ray-Ban 是 42）。'},
+ {name:'左眼波導',col:'#94a3b8',spec:'同右眼（示意，細節省略）',
+  desc:'Orion 是雙眼顯示，左眼也有一套同樣的碳化矽波導。這裡省略細節，只畫成一片。'},
+ {name:'鏡框',col:'#475569',spec:'鎂合金・兼顧輕量與散熱',
+  desc:'Orion 的鏡框用鎂合金，重量輕、又能幫忙散熱。整副眼鏡約 98 公克；外形是示意，沿用同一個鏡框造型方便對照。'},
+ {name:'鏡腿',col:'#0369a1',spec:'感測器・電池（示意）',
+  desc:'鏡腿與鏡框周圍藏著追蹤眼睛、手和環境的相機與感測器。大部分運算交給口袋裡的無線運算模組（compute puck），眼鏡本體才能做得比較輕。'},
+ {name:'鉸鏈',col:'#64748b',spec:'示意',
+  desc:'連接鏡框與鏡腿（示意）。'}
+];
+var TOUR_SIC=[
+ {t:'畫面誕生',sub:'microLED 投影機',icon:'📽️',focus:[6],ctx:[9,8],f:.5,
+  say:'鏡腿前端藏著一台微型投影機，用的是 <b>microLED</b>：每個像素自己會發光，不用像 LCoS 那樣另外打光，所以可以做得更小。',
+  like:'像一面由幾十萬顆超小 LED 組成的迷你螢幕。'},
+ {t:'掰進板子',sub:'入口光柵',icon:'↪️',focus:[2],ctx:[6,1],f:.5,
+  say:'投影機的光打到碳化矽板角落的<b>入口光柵</b>。光柵是比頭髮細幾百倍的斜紋，把光「掰」成很斜的角度，斜到能在板子裡全反射、出不去。',
+  like:'像把彈珠斜斜彈進一條透明水管，它就只能在管壁之間來回彈著前進。'},
+ {t:'橫向展開',sub:'全反射＋擴展光柵',icon:'↔️',focus:[1,3],ctx:[2,4],f:.35,
+  say:'光在碳化矽板裡靠全反射前進，先沿著上方的<b>擴展光柵</b>往旁邊走。每經過一次，就有一部分光被轉向下方，畫面在水平方向被複製展開。碳化矽折射率約 2.7，能關住的角度範圍比玻璃寬，視野才做得到約 70°。',
+  like:'像一條主水管接了一排分支水管：主管一路往前送，每個分支都分到一點水。'},
+ {t:'送進眼睛',sub:'出口光柵',icon:'👁️',focus:[4],ctx:[1,3],f:.3,
+  say:'往下走的光來到中間大片的<b>出口光柵</b>，每碰一次就有一部分被送出板子、射向眼睛。水平加垂直兩次展開，所以眼睛上下左右移動，都還看得到完整畫面。',
+  like:'像一整片灑水器：每個位置都有水灑出來，站在哪裡都淋得到。'},
+ {t:'看見世界',sub:'保護層與彩虹紋',icon:'🌈',focus:[0,1,4,5],ctx:[8,3],f:.3,world:true,
+  say:'前後兩層<b>保護層</b>把碳化矽板夾在中間，外界的光（灰色光點）直接穿過，和畫面疊在一起。外界白光碰到出口光柵可能被分成七彩（彩虹紋）；碳化矽讓光柵週期可以更細，把大部分彩虹撥到眼睛看不到的方向。',
+  like:'像隔著一片很乾淨的玻璃看風景，只是玻璃上還浮著一層發光的畫面。'}
+];
+var KINDS={
+ rb:{parts:PARTS,tour:TOUR,note:'實際產品的拆解（依 iFixit 等拆解報告）：光在玻璃裡全反射，靠一排斜放的部分反射鏡導出。'},
+ sic:{parts:PARTS_SIC,tour:TOUR_SIC,note:'參考 Meta Orion 的<b>示意模型</b>：Orion 沒有市售、也沒有公開拆解，光柵佈局參考研究論文常見的三區設計（入口、擴展、出口）。看光怎麼先橫向、再往下展開。'}};
+
 /* ---------- 共用介面：清單、資訊卡、滑桿、按鈕 ---------- */
-var ui={sel:1,f:.6,light:true,auto:false,tour:-1,picked:false};   // picked：使用者點選過才淡出其他零件，首屏保留完整外觀
+var ui={sel:1,f:.6,light:true,auto:false,tour:-1,picked:false,kind:'rb'};   // picked：使用者點選過才淡出其他零件，首屏保留完整外觀
 var ex=$('ex'),exv=$('exv'),btog=$('b-toggle'),info=$('info'),list=$('list'),hoverTag=$('hover');
 var bLight=$('b-light'),bAuto=$('b-auto'),bLens=$('b-lens'),bQ=$('b-q');
 var engine=null;
-list.innerHTML=PARTS.map(function(p,i){return '<li><button type="button" data-id="'+i+'"><span class="sw" style="background:'+p.col+'"></span><span class="i">'+(i+1)+'</span><span>'+p.name+'</span></button></li>';}).join('');
+function renderList(){list.innerHTML=PARTS.map(function(p,i){return '<li><button type="button" data-id="'+i+'"><span class="sw" style="background:'+p.col+'"></span><span class="i">'+(i+1)+'</span><span>'+p.name+'</span></button></li>';}).join('');}
+renderList();
 list.addEventListener('click',function(e){var b=e.target.closest('button[data-id]');if(b)pick(+b.dataset.id,true);});
 list.addEventListener('pointerover',function(e){var b=e.target.closest('button[data-id]');if(engine&&engine.hoverPart)engine.hoverPart(b?+b.dataset.id:null);});
 list.addEventListener('pointerleave',function(){if(engine&&engine.hoverPart)engine.hoverPart(null);});
@@ -5573,7 +5629,8 @@ bLens.addEventListener('click',function(){pick(1,true);engine.focusLens();});
    Three.js 引擎
    座標（約 mm）：+X＝配戴者左側、+Y＝上、+Z＝朝外界；右眼（含波導）在 −X。
    ========================================================================= */
-function createGLEngine(onFatal){
+function createGLEngine(onFatal,kind){
+  var SIC=kind==='sic',ID=SIC?{frame:8,temple:9,hinge:10}:{frame:10,temple:12,hinge:11};
   var T=window.THREE;
   if(!T||!T.WebGLRenderer||!T.OrbitControls)return null;
   var probe=document.createElement('canvas'),pc=null;
@@ -5683,10 +5740,10 @@ function createGLEngine(onFatal){
   var FRR=[5,10,6,14,22,8,6,6,8,22,14,6,10,5];
   var fsh=rshape(FR,FRR);
   fsh.holes.push(rshape(lensPts(1,false,-37),LR,new T.Path()),rshape(lensPts(1,true,37),LR,new T.Path()));
-  var sFrame=solid(10,root,[0,0,0]);
+  var sFrame=solid(ID.frame,root,[0,0,0]);
   var fgeo=new T.ExtrudeGeometry(fsh,{depth:4.4,bevelEnabled:true,bevelThickness:1.1,bevelSize:1.1,bevelSegments:5,curveSegments:16});
   fgeo.translate(0,0,-2.2);
-  add(sFrame.g,smooth(fgeo),mFrame(0x1b1f27));
+  add(sFrame.g,smooth(fgeo),SIC?mStd(0x4b525c,.42,.55):mFrame(0x1b1f27));
   [-1,1].forEach(function(sx){add(sFrame.g,new T.CylinderGeometry(1.1,1.1,.5,20),mChrome,[sx*69.5,17,3.35],[Math.PI/2,0,0]);});
 
   /* 12 鏡腿外殼：側面輪廓擠出，左右各分內外兩半 */
@@ -5694,14 +5751,14 @@ function createGLEngine(onFatal){
   ts.quadraticCurveTo(142.5,-13.5,138,-13.8);ts.bezierCurveTo(134,-6,128,-.5,116,.3);ts.bezierCurveTo(100,1,60,-1,30,-3.2);ts.lineTo(3,-3.5);ts.quadraticCurveTo(1.2,4.5,3,12.5);
   var tgeo=new T.ExtrudeGeometry(ts,{depth:1.6,bevelEnabled:true,bevelThickness:.9,bevelSize:.9,bevelSegments:3,curveSegments:28});
   tgeo.translate(0,0,-.8);tgeo.rotateY(Math.PI/2);tgeo=smooth(tgeo);
-  var mTo=mFrame(0x1e232b),mTi=mFrame(0x2b323c);
-  add(solid(12,root,[-44,0,-14],[-TX-1.7,0,0]).g,tgeo,mTo);
-  add(solid(12,root,[-10,0,-14],[-TX+1.7,0,0]).g,tgeo,mTi);
-  add(solid(12,root,[44,0,-14],[TX+1.7,0,0]).g,tgeo,mTo);
-  add(solid(12,root,[10,0,-14],[TX-1.7,0,0]).g,tgeo,mTi);
+  var mTo=SIC?mStd(0x4b525c,.42,.55):mFrame(0x1e232b),mTi=SIC?mStd(0x3a4049,.5,.4):mFrame(0x2b323c);
+  add(solid(ID.temple,root,[-44,0,-14],[-TX-1.7,0,0]).g,tgeo,mTo);
+  add(solid(ID.temple,root,[-10,0,-14],[-TX+1.7,0,0]).g,tgeo,mTi);
+  add(solid(ID.temple,root,[44,0,-14],[TX+1.7,0,0]).g,tgeo,mTo);
+  add(solid(ID.temple,root,[10,0,-14],[TX-1.7,0,0]).g,tgeo,mTi);
 
   /* 11 鉸鏈 */
-  [-1,1].forEach(function(sx){var s=solid(11,root,[sx*3,-14,-6],[sx*TX,5,-5.2]);
+  [-1,1].forEach(function(sx){var s=solid(ID.hinge,root,[sx*3,-14,-6],[sx*TX,5,-5.2]);
     add(s.g,new T.CylinderGeometry(1.8,1.8,10,24),mChrome);
     add(s.g,new T.BoxGeometry(2.2,8.6,4.2),mSteel,[0,0,-2.3]);
     add(s.g,new T.BoxGeometry(2.2,3,3.6),mSteel,[0,0,2]);
@@ -5721,6 +5778,7 @@ function createGLEngine(onFatal){
   [[0xff4040,-2.2],[0x22c55e,0],[0x3b82f6,2.2]].forEach(function(c){var m=new T.MeshStandardMaterial({color:c[0],emissive:c[0],emissiveIntensity:1.4,roughness:.35});
     LED_MATS.push(m);add(sL.g,new T.BoxGeometry(1.2,1.2,.6),m,[0,c[1],-6.25],null,true);});
 
+  if(!SIC){
   /* 7 主機板 AR1：PCB 綠＋走線貼圖、黑色晶片、金屬屏蔽罩 */
   var sP=solid(7,root,[-24,0,-14],[-TX,3.8,-50]);
   var pcbTex=canvasTex(1024,160,function(g,w,h){var r=rnd(11),i,j;g.fillStyle='#17613f';g.fillRect(0,0,w,h);
@@ -5795,6 +5853,34 @@ function createGLEngine(onFatal){
   var s5=solid(5,LL,[0,0,-14]);
   add(s5.g,lensGeo(true,4.4,1.04),mGlass({color:'#f8fafc',att:'#cbd5e1',attD:30,ior:1.5,thick:4.4,irid:.2,low:.28}),null,null,true);
 
+  }else{
+  /* ===== 碳化矽繞射式（示意）：0 外側保護層 / 1 碳化矽板 / 2 入口光柵 / 3 擴展光柵 / 4 出口光柵 / 5 內側保護層 / 7 左眼波導 ===== */
+  var s0=solid(0,RL,[0,0,22]);
+  add(s0.g,lensGeo(false,.55,1.04),mGlass({color:'#f5f3ff',att:'#a78bfa',attD:30,ior:1.5,thick:.6,irid:.7,low:.24}),[0,0,1.3],null,true);
+  var sW=solid(1,RL,[0,0,-14]);
+  (function(){var s=rshape(lensPts(1.04,false),LR);
+    var g=new T.ExtrudeGeometry(s,{depth:1.1,bevelEnabled:true,bevelThickness:.25,bevelSize:.25,bevelSegments:2,curveSegments:22});g.translate(0,0,-.55);
+    add(sW.g,smooth(g),[mGlass({color:'#f0fdf4',att:'#34d399',attD:22,ior:2.33,thick:1.6,disp:.6,irid:.25,rough:.02,low:.3}),
+      mGlass({color:'#a7f3d0',att:'#10b981',attD:4,ior:2.33,thick:1.6,disp:1,rough:.08,emis:'#34d399',ei:.28,tr:.7,low:.55})],null,null,true);
+    var eg=new T.BufferGeometry().setFromPoints(s.getPoints(24).map(function(p){return V(p.x,p.y,0);}));
+    var em=new T.LineBasicMaterial({color:0x10b981,transparent:true,opacity:.5});
+    [.82,-.82].forEach(function(z){var l=new T.LineLoop(eg,em);l.position.z=z;sW.g.add(l);});})();
+  // 光柵：細紋貼圖（ShapeGeometry 的 UV＝實際座標，所以 repeat 0.22 ≈ 每 4.5 mm 一組紋路，示意）
+  var gratMat=function(col,mode){var tx=canvasTex(128,128,function(g,w,h){g.fillStyle='rgba(255,255,255,.22)';g.fillRect(0,0,w,h);g.strokeStyle=col;g.lineWidth=5;
+      for(var k=-8;k<16;k++){g.beginPath();if(mode===1){g.moveTo(k*16,0);g.lineTo(k*16+h,h);}else if(mode===2){g.moveTo(0,k*16+8);g.lineTo(w,k*16+8);}else{g.moveTo(k*16+8,0);g.lineTo(k*16+8,h);}g.stroke();}});
+    tx.wrapS=tx.wrapT=1000;tx.repeat.set(.22,.22);
+    return new T.MeshStandardMaterial({color:0xffffff,map:tx,emissive:new T.Color(col),emissiveMap:tx,emissiveIntensity:.5,transparent:true,opacity:.92,roughness:.35,metalness:.1,side:2,depthWrite:false});};
+  var rectSh=function(x0,y0,x1,y1,r){return rshape([[x0,y0],[x1,y0],[x1,y1],[x0,y1]],[r,r,r,r]);};
+  var s2=solid(2,RL,[0,0,-19]),icSh=new T.Shape();icSh.absarc(-23,9.5,3,0,Math.PI*2,false);
+  add(s2.g,new T.ExtrudeGeometry(icSh,{depth:.02,bevelEnabled:false,curveSegments:40}),gratMat('#e11d48',0),[0,0,-.95],null,true);
+  var s3=solid(3,RL,[0,0,-19]);add(s3.g,new T.ExtrudeGeometry(rectSh(-19.5,7.5,17,11.5,1.2),{depth:.02,bevelEnabled:false,curveSegments:8}),gratMat('#d97706',1),[0,0,-.95],null,true);
+  var s4=solid(4,RL,[0,0,-19]);add(s4.g,new T.ExtrudeGeometry(rectSh(-15,-12,17,4,3),{depth:.02,bevelEnabled:false,curveSegments:8}),gratMat('#0284c7',2),[0,0,-.95],null,true);
+  var s5=solid(5,RL,[0,0,-34]);
+  add(s5.g,lensGeo(false,.55,1.04),mGlass({color:'#fdf4ff',att:'#e879f9',attD:30,ior:1.5,thick:.6,irid:.7,low:.24}),[0,0,-1.45],null,true);
+  var s7=solid(7,LL,[0,0,-14]);
+  add(s7.g,lensGeo(true,1.6,1.04),mGlass({color:'#f0fdf4',att:'#6ee7b7',attD:28,ior:2.33,thick:1.6,irid:.2,low:.28}),null,null,true);
+  }
+
   /* 眼睛（示意）與「外面的世界」看板（導覽第 5 步） */
   var eyeG=new T.Group();eyeG.position.set(0,3,-24);RL.add(eyeG);
   add(eyeG,new T.SphereGeometry(5.2,40,28),new T.MeshPhysicalMaterial({color:0xc9d3de,roughness:.55,clearcoat:.35,clearcoatRoughness:.2,envMapIntensity:.7}),null,null,true);
@@ -5824,13 +5910,14 @@ function createGLEngine(onFatal){
     seen.forEach(function(m){var glow=!!(m.emissive&&m.emissive.getHex()!==0);
       m.userData.base={opacity:m.opacity,transparent:m.transparent,depthWrite:m.depthWrite,emissive:m.emissive?m.emissive.clone():null,ei:glow?m.emissiveIntensity:0,color:m.color?m.color.clone():null};});});
   // 埋在玻璃裡的零件：淡出時改成「變淡但不透明」，才看得到（透明物件不會被玻璃折射取樣）
-  parts[2].inGlass=parts[3].inGlass=true;
+  parts[2].inGlass=parts[3].inGlass=true;if(SIC)parts[4].inGlass=true;
   var GHOST=new T.Color('#dfe6ee');
   // 編號標籤放在各零件好辨識的位置（零件自身座標）
-  var BADGE=[[-14,-18,3],[22,13,1.7],[2,-10.5,0],[-25,13.6,0],[-19,-15,-3],[0,0,2.4],[0,4.4,0],[0,4.8,0],[0,4.8,0],[0,0,0],[0,23.5,3.3],[0,6,0],[0,10.5,-62]];
-  var BADGE_T={0:[-12,19.5,3],1:[22,7,1.7],2:[2,-5,0],4:[-16,-17,-3]};   // 導覽時的大標籤錯開高度，側視不重疊
+  var BADGE=SIC?[[-16,-16,1.3],[22,13,.8],[-23,13.5,-.95],[8,12.8,-.95],[2,-8,-.95],[-19,-15,-1.45],[0,4.4,0],[0,0,1],[0,23.5,3.3],[0,10.5,-62],[0,6,0]]:[[-14,-18,3],[22,13,1.7],[2,-10.5,0],[-25,13.6,0],[-19,-15,-3],[0,0,2.4],[0,4.4,0],[0,4.8,0],[0,4.8,0],[0,0,0],[0,23.5,3.3],[0,6,0],[0,10.5,-62]];
+  var BADGE_T=SIC?{0:[-12,19.5,1.3],1:[22,7,.8],2:[-23,15.5,-.95],3:[8,13.6,-.95],4:[2,-6,-.95],5:[-16,-17,-1.45]}:{0:[-12,19.5,3],1:[22,7,1.7],2:[2,-5,0],4:[-16,-17,-3]};   // 導覽時的大標籤錯開高度，側視不重疊
 
   /* ---- 光路：LCoS → 入光反射鏡 → 鋸齒全反射 → 反射鏡陣列 → 眼睛 ---- */
+  if(!SIC){
   var H=1.45;
   function yAt(x){return 10.5-.117*(x+25);}
   var ZZ=[[-25,yAt(-25),0]];
@@ -5846,6 +5933,21 @@ function createGLEngine(onFatal){
     spec.push({t:'wg',p:c.p,fl:FL_SL+i});spec.push({t:'pup'});routes.push({spec:spec,exit:true,iX:spec.length-2});});
   (function(){var spec=[{t:'tip'},{t:'wg',p:ZZ[0],fl:FL_IN}];for(var k=1;k<ZZ.length;k++)spec.push({t:'wg',p:ZZ[k],fl:k-1});
     spec.push({t:'wg',p:zEnd});routes.push({spec:spec,exit:false,iX:spec.length-1});})();
+  }else{
+  /* 碳化矽：入口光柵 → 沿上方擴展光柵橫向全反射 → 在 5 個位置轉向往下 → 出口光柵把光送進眼睛（2D 擴展，示意） */
+  var Hs=.5,ICX7=-23,TY7=9.5,BX=[-12,-5.5,1,7.5,14],YE=[-3,-5,-4,-5,-3],TOP=[[ICX7,TY7,-Hs]];
+  for(var tx7=ICX7+1.8,sg7=1;tx7<=19;tx7+=3.6,sg7=-sg7)TOP.push([tx7,TY7,sg7*Hs]);
+  var zTop=function(x){for(var k=0;k<TOP.length-1;k++){var a=TOP[k],b=TOP[k+1];if(x>=a[0]&&x<=b[0])return a[2]+(b[2]-a[2])*(x-a[0])/(b[0]-a[0]);}return TOP[TOP.length-1][2];};
+  FL_IN=TOP.length-1;FL_SL=FL_IN+1;NFL=FL_SL+BX.length*2;routes=[];
+  BX.forEach(function(bx,i){var spec=[{t:'tip'},{t:'wg',p:TOP[0],fl:FL_IN}],k=1;
+    for(;k<TOP.length&&TOP[k][0]<bx;k++)spec.push({t:'wg',p:TOP[k],fl:k-1});
+    var zb=zTop(bx);spec.push({t:'wg',p:[bx,TY7,zb],fl:FL_SL+i});var iX=spec.length-1,sgn=zb>=0?-1:1;
+    for(var y=TY7-1.6;y>YE[i]+.8;y-=3.2){spec.push({t:'wg',p:[bx,y,sgn*Hs]});sgn=-sgn;}
+    spec.push({t:'wg',p:[bx,YE[i],-Hs],fl:FL_SL+BX.length+i});spec.push({t:'pup'});
+    routes.push({spec:spec,exit:true,iX:iX});});
+  (function(){var spec=[{t:'tip'},{t:'wg',p:TOP[0],fl:FL_IN}];for(var k=1;k<TOP.length;k++)spec.push({t:'wg',p:TOP[k],fl:k-1});
+    spec.push({t:'wg',p:[20.5,TY7,0]});routes.push({spec:spec,exit:false,iX:spec.length-1});})();
+  }
   [[-9,-5],[1,-5],[11,-5],[-9,8],[1,8],[11,8]].forEach(function(w){routes.push({spec:[{t:'wA',p:w},{t:'wB',p:w},{t:'pup'}],world:true,iX:0});});
   routes.forEach(function(R){R.pts=R.spec.map(function(){return new T.Vector3();});R.fl=R.spec.map(function(s){return s.fl==null?-1:s.fl;});
     R.cum=new Float32Array(R.spec.length);R.L=1;R.pre=0;R.rev=-1;R.lvl=-1;});
@@ -5888,7 +5990,7 @@ function createGLEngine(onFatal){
   for(var ri=0;ri<5;ri++)addP(ri,24);addP(5,34);for(ri=6;ri<12;ri++)addP(ri,9);
   var PT=pointsObj(P.length,FS_DOT,30),FLS=pointsObj(NFL,FS_RING,31),flash=new Float32Array(NFL);
   var G0=new T.Color('#ec4899'),G1=new T.Color('#8b5cf6'),G2=new T.Color('#0ea5e9'),GW=new T.Color('#475569'),_c=new T.Color();
-  var FCOL=[];for(q0=0;q0<NFL;q0++)FCOL.push(new T.Color(q0<FL_IN?'#22d3ee':q0===FL_IN?'#f43f5e':'#f59e0b'));
+  var FCOL=[];for(q0=0;q0<NFL;q0++)FCOL.push(new T.Color(q0<FL_IN?'#22d3ee':q0===FL_IN?'#f43f5e':(SIC&&q0>=FL_SL+5)?'#60a5fa':'#f59e0b'));
   function grad(u,out){u=Math.max(0,Math.min(1,u));return u<.5?out.copy(G0).lerp(G1,u*2):out.copy(G1).lerp(G2,(u-.5)*2);}
 
   /* 光束與拆解虛線：LineSegments2（像素寬度固定，預先配置緩衝區後就地更新） */
@@ -5931,8 +6033,15 @@ function createGLEngine(onFatal){
     fly={t0:performance.now(),ms:ms,a:controls.target.clone(),b:v.tgt.clone(),d0:o0.clone().normalize(),l0:o0.length(),l1:o1.length()};
     fly.q=new T.Quaternion().setFromUnitVectors(fly.d0,o1.normalize());kick();}
   var HOME={tgt:V(-16,-2,-46),dir:V(-.68,.4,.6).normalize(),dist:318};
-  function lensView(){return{tgt:anchorAt(sW,.75,[-2,2,4]),dir:V(-.42,.3,.86).normalize(),dist:150};}
+  function lensView(){return SIC?{tgt:anchorAt(sW,.75,[-2,2,-4]),dir:V(.32,.3,-.9).normalize(),dist:150}:{tgt:anchorAt(sW,.75,[-2,2,4]),dir:V(-.42,.3,.86).normalize(),dist:150};}
   function tourView(i,f){var t,d,r;
+    if(SIC){   // 光柵在靠眼睛那一面，從眼睛這側（-Z）往鏡片看
+      if(i===0){t=anchorAt(sL,f,[3,1,2]);d=V(-.5,.5,.7);r=92;}
+      else if(i===1){t=anchorAt(sL,f,[10,4.5,7.5]).add(anchorAt(sW,f,[-23,9.5,0])).multiplyScalar(.5);d=V(.35,.32,-.88);r=82;}
+      else if(i===2){t=anchorAt(sW,f,[-3,6,0]);d=V(.25,.42,-.87);r=98;}
+      else if(i===3){t=anchorAt(sW,f,[1,-3,0]);d=V(.38,-.32,-.87);r=108;}
+      else{t=RL.localToWorld(V(0,3,10));d=V(-.97,.2,.12);r=175;}
+      return{tgt:t,dir:d.normalize(),dist:r};}
     if(i===0){t=anchorAt(sL,f,[3,1,2]);d=V(-.5,.5,.7);r=92;}
     else if(i===1){t=anchorAt(sL,f,[10,4.5,7.5]).add(anchorAt(sW,f,[-25,10.5,0])).multiplyScalar(.5);d=V(-.62,.38,.68);r=82;}
     else if(i===2){t=anchorAt(sW,f,[-6,8,0]);d=V(-.12,.86,.5);r=72;}
@@ -6022,7 +6131,7 @@ function createGLEngine(onFatal){
   function cls(el,c,on){if(el.classList.contains(c)!==on)el.classList.toggle(c,on);}
   /* 螢幕空間防重疊：「眼睛」先放（往鏡片外側偏移），再依優先序放編號；
      撞到就往旁邊挪一點，挪不開就先隱藏，滑過或選取時一定顯示 */
-  var BPRI=[1,6,2,3,10,0,4,7,8,9,11,12,5],RECTS=[],_e=new T.Vector3(),_m=new T.Vector3();
+  var BPRI=SIC?[1,6,2,3,4,0,5,8,9,10,7]:[1,6,2,3,10,0,4,7,8,9,11,12,5],RECTS=[],_e=new T.Vector3(),_m=new T.Vector3();
   function hitRect(r){for(var k=0;k<RECTS.length;k++){var q=RECTS[k];
     if(r.x-r.w/2<q.x+q.w/2+3&&r.x+r.w/2+3>q.x-q.w/2&&r.y-r.h/2<q.y+q.h/2+3&&r.y+r.h/2+3>q.y-q.h/2)return true;}return false;}
   function toScreen(v,w,h){v.project(camera);return{x:(v.x+1)/2*w,y:(1-v.y)/2*h,behind:v.z>1||v.z<-1};}
@@ -6119,7 +6228,7 @@ function createGLEngine(onFatal){
       if(fps<28){if(++mon.bad>=3){Q.high=false;applyQuality();toast('偵測到畫面不夠流暢，已自動切換為省電畫質（關閉玻璃折射與光暈）。');}}else mon.bad=0;}}
 
   /* ---- 尺寸 ---- */
-  function resize(){var w=vp.clientWidth,h=vp.clientHeight;if(!w||!h)return;var p=pr();
+  function resize(){if(dead)return;var w=vp.clientWidth,h=vp.clientHeight;if(!w||!h)return;var p=pr();
     renderer.setPixelRatio(p);renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();
     if(composer){composer.setPixelRatio(p);composer.setSize(w,h);}
     U.uScale.value=h*p/(2*Math.tan(camera.fov*D/2));U.uPR.value=p;kick();}
@@ -6161,6 +6270,9 @@ function createGLEngine(onFatal){
   kick();
 
   return{kind:'gl',
+    destroy:function(){dead=true;clearTimeout(lostT);if(raf)cancelAnimationFrame(raf);raf=0;tipEl.classList.remove('show');eyeTag.style.opacity='0';
+      try{controls.dispose();}catch(e){}try{if(composer)composer.dispose();}catch(e){}try{renderer.dispose();renderer.forceContextLoss();}catch(e){}
+      if(cv.parentNode)cv.parentNode.removeChild(cv);var nb=badgeWrap.cloneNode(false);badgeWrap.parentNode.replaceChild(nb,badgeWrap);},
     diag:function(){return['引擎：Three.js r'+T.REVISION+(dead?'（已停用）':''),'GPU：'+(gpu||'未知'),
       '裝置：'+(MOBILE?'手機/平板':'桌機')+'・螢幕 DPR '+(window.devicePixelRatio||1).toFixed(2)+'・使用 '+pr(),
       '畫布：'+cv.width+'×'+cv.height+'・'+tierText()+(Q.locked?'（已鎖定）':''),
@@ -6312,12 +6424,13 @@ function showFallbackNotice(reason){var old=document.querySelector('#vp .notice'
     '想看完整 3D 版，可改用電腦上的新版 Chrome、Edge 或 Safari。<button type="button">知道了</button>';
   nt.querySelector('button').addEventListener('click',function(){nt.remove();});$('vp').appendChild(nt);}
 function switchToSvg(reason){if(engine&&engine.kind==='svg')return;
+  if(ui.kind!=='rb')setKindData('rb');var kb=$('kind1');if(kb)kb.closest('.kind-bar').hidden=true;
   var c=$('gl');if(c)c.remove();$('badges').innerHTML='';$('eyeTag').style.opacity='0';$('tip').classList.remove('show');bQ.hidden=true;
   engine=createSvgEngine();logD('SVG 簡化版已啟用');showFallbackNotice(reason);
   if(ui.tour>=0)engine.tour(TOUR[ui.tour],ui.tour);}
-try{engine=createGLEngine(switchToSvg);}
+try{engine=createGLEngine(switchToSvg,ui.kind);}
 catch(err){logD('Three.js 初始化失敗：'+((err&&err.message)||err));engine=null;var bad=$('gl');if(bad)bad.remove();}
-if(!engine){engine=createSvgEngine();logD('沒有 WebGL 2 → 使用 SVG 簡化版');showFallbackNotice(null);}
+if(!engine){engine=createSvgEngine();logD('沒有 WebGL 2 → 使用 SVG 簡化版');showFallbackNotice(null);var kb0=$('kind1');if(kb0)kb0.closest('.kind-bar').hidden=true;}
 syncUI(ui.f);showInfo();
 
 /* ---------- 診斷面板（給手機除錯用：連點三下「01」） ---------- */
@@ -6333,7 +6446,8 @@ function toggleDiag(){if(!diagEl){diagEl=document.createElement('div');diagEl.cl
 /* ---------- 導覽模式 ---------- */
 var ch1=$('ch1'),stage=$('stage1'),tbBody=$('tbBody'),tb={bar:$('tourbar'),step:$('tbStep'),dots:$('tbDots'),title:$('tbTitle'),say:$('tbSay'),like:$('tbLike'),icon:$('tbIcon'),prev:$('tbPrev'),next:$('tbNext'),full:$('tbFull'),close:$('tbClose')};
 var saved=null;
-tb.dots.innerHTML=TOUR.map(function(s,i){return '<button type="button" role="tab" data-i="'+i+'" aria-selected="false" aria-label="第 '+(i+1)+' 步：'+s.t+'">'+(i+1)+'</button>';}).join('');
+function renderDots(){tb.dots.innerHTML=TOUR.map(function(s,i){return '<button type="button" role="tab" data-i="'+i+'" aria-selected="false" aria-label="第 '+(i+1)+' 步：'+s.t+'">'+(i+1)+'</button>';}).join('');}
+renderDots();
 function startTour(){if(ui.tour>=0)return;saved={f:ui.f,sel:ui.sel,light:ui.light,auto:ui.auto};
   ch1.classList.add('touring');tb.bar.hidden=false;
   if(!ui.light)setLight(true);if(ui.auto)setAuto(false);
@@ -6375,6 +6489,20 @@ tb.prev.addEventListener('click',function(){goTour(ui.tour-1);});
 tb.next.addEventListener('click',function(){goTour(ui.tour+1);});
 tb.close.addEventListener('click',endTour);
 tb.dots.addEventListener('click',function(e){var b=e.target.closest('button[data-i]');if(b)goTour(+b.dataset.i);});
+/* ---------- 切換：Ray-Ban 反射式 ／ 碳化矽繞射式 ---------- */
+var kindBar=$('kind1');
+function setKindData(k){ui.kind=k;PARTS=KINDS[k].parts;TOUR=KINDS[k].tour;
+  Array.prototype.forEach.call(kindBar.querySelectorAll('button'),function(b){var on=b.dataset.k===k;b.classList.toggle('on',on);b.setAttribute('aria-pressed',String(on));});
+  $('kindNote').innerHTML=KINDS[k].note;renderList();renderDots();}
+function switchKind(k){if(k===ui.kind||!KINDS[k]||!engine||engine.kind!=='gl')return;
+  if(ui.tour>=0)endTour();
+  try{engine.destroy();}catch(e){}
+  setKindData(k);ui.sel=1;ui.picked=false;setHover(null);
+  try{engine=createGLEngine(switchToSvg,k);}catch(err){logD('切換失敗：'+((err&&err.message)||err));engine=null;var bad=$('gl');if(bad)bad.remove();}
+  if(!engine){setKindData('rb');engine=createSvgEngine();showFallbackNotice(null);kindBar.closest('.kind-bar').hidden=true;}
+  else if(ui.auto)engine.setAuto(true);
+  syncUI(ui.f);showInfo();logD('切換為：'+(k==='sic'?'碳化矽繞射式':'Ray-Ban 反射式'));}
+kindBar.addEventListener('click',function(e){var b=e.target.closest('button[data-k]');if(b)switchKind(b.dataset.k);});
 })();
 
 
@@ -6541,7 +6669,7 @@ var S4=scene('cv4',function(o,t){
     var nh=Math.round(f*HEAVY.length);
     for(var i=0;i<nh;i++){var hx=lx+HEAVY[i][0]*lw,hy=ly+HEAVY[i][1]*lh,pul=reduce?0:Math.sin(t*2+i)*.8;
       c.fillStyle='rgba(217,119,6,.22)';c.beginPath();c.arc(hx,hy,10+pul,0,7);c.fill();c.fillStyle='#d97706';c.beginPath();c.arc(hx,hy,6.2,0,7);c.fill();}
-    label(c,'● 矽',lx,ly+lh+18,'#0284c7');label(c,'● 氧',lx+48,ly+lh+18,'#e11d48');label(c,'● 鑭/鈦/鈮 等重元素',lx+96,ly+lh+18,'#b45309');
+    label(c,'● 矽',lx,ly+lh+18,'#0284c7');label(c,'● 氧',lx+48,ly+lh+18,'#e11d48');if(lx+96+150>W*.52)label(c,'● 鑭/鈦/鈮 等重元素',lx,ly+lh+38,'#b45309');else label(c,'● 鑭/鈦/鈮 等重元素',lx+96,ly+lh+18,'#b45309');
     var bx=W*.52,bw=W*.44,by=H*.46,n=nGlass(f);
     var g=c.createLinearGradient(0,by,0,H);g.addColorStop(0,'rgba(2,132,199,'+(.12+.22*f)+')');g.addColorStop(1,'rgba(2,132,199,.04)');c.fillStyle=g;c.fillRect(bx,by,bw,H*.5);
     c.strokeStyle='#334155';c.lineWidth=1.2;c.beginPath();c.moveTo(bx,by);c.lineTo(bx+bw,by);c.stroke();
