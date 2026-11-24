@@ -514,6 +514,9 @@ section.ch.touring .kind-bar{display:none}
 .real-grid .role{grid-template-columns:auto minmax(0,1fr);column-gap:12px;align-items:start}
 .real-grid .role .ic{grid-row:1/span 3}
 @media(max-width:640px){.fov-canvas{aspect-ratio:4/3}}
+/* 02 補充：三種鏡片外觀對照 */
+.look-wrap{border:1px solid var(--line-strong);border-radius:12px;background:#fff;padding:8px}
+.look-wrap svg{display:block;width:100%;height:auto;max-height:340px}
 </style>
 </head>
 <body>
@@ -786,6 +789,66 @@ section.ch.touring .kind-bar{display:none}
         <li><b>為什麼黏成一體</b>三片的位置要精準對齊，iFixit 拆解看到它們黏在波導兩側；其中一片還整合了 Transitions 自動變色。</li>
       </ol>
       <p class="src-note">推拉鏡片的一般原理；Ray-Ban Display 的實際度數與畫面距離未公開・示意</p>
+    </div>
+  </details>
+  <details class="pk xcard" id="lookCard">
+    <summary><span class="pk-n">？</span><span class="pk-t">肉眼看鏡片：方框、幾乎看不見，還是很淡？</span><span class="pk-one">三種波導的外觀對照（示意）</span></summary>
+    <div class="x-body">
+      <p class="x-key">你在實體眼鏡上看到的方框，就是負責把光「導出來」的零件本身：繞射式看到的是光柵區；反射式的鏡子埋在玻璃裡，多數角度幾乎看不見。</p>
+      <div class="look-wrap">
+        <svg id="lookSvg" viewBox="0 0 400 240" role="img" aria-label="鏡片正面外觀示意圖，可切換三種波導並調整傾斜角度">
+          <defs>
+            <linearGradient id="lookSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dbeafe"/><stop offset=".62" stop-color="#eff6ff"/><stop offset=".62" stop-color="#e2e8f0"/><stop offset="1" stop-color="#cbd5e1"/></linearGradient>
+            <linearGradient id="lookRb" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+              <stop offset="0" stop-color="#e11d48"/><stop offset=".2" stop-color="#f97316"/><stop offset=".4" stop-color="#eab308"/><stop offset=".6" stop-color="#16a34a"/><stop offset=".8" stop-color="#0ea5e9"/><stop offset="1" stop-color="#7c3aed"/>
+            </linearGradient>
+            <clipPath id="lookClip"><path d="M40 70 Q44 34 96 30 L330 28 Q368 30 370 66 L366 168 Q360 210 300 214 L110 216 Q46 212 40 170 Z"/></clipPath>
+          </defs>
+          <g clip-path="url(#lookClip)">
+            <rect x="0" y="0" width="400" height="240" fill="url(#lookSky)"/>
+            <path d="M40 160 Q120 140 200 152 T380 146 V240 H40 Z" fill="#cbd5e1" opacity=".55"/>
+            <!-- 繞射式（玻璃 / 碳化矽）：入口、轉彎、出口三塊光柵區 -->
+            <g id="lookDif">
+              <circle class="lk-reg" cx="334" cy="74" r="14"/>
+              <polygon class="lk-reg" points="318,60 318,88 250,104 250,44"/>
+              <rect class="lk-reg" x="92" y="62" width="150" height="118" rx="6"/>
+            </g>
+            <!-- 反射式（陣列）：入光稜鏡＋斜放部分反射鏡陣列 -->
+            <g id="lookArr">
+              <rect x="316" y="60" width="26" height="64" rx="3" fill="#94a3b8" fill-opacity=".25" stroke="#64748b" stroke-width="1.2"/>
+              <g id="lookLines" stroke="#64748b" stroke-width="1.6"></g>
+              <line id="lookFirst" x1="302" y1="48" x2="296" y2="128" stroke="#475569" stroke-width="2" stroke-opacity=".6"/>
+              <g id="lookGlint" stroke="#fff" stroke-width="3" stroke-linecap="round"></g>
+            </g>
+          </g>
+          <path d="M40 70 Q44 34 96 30 L330 28 Q368 30 370 66 L366 168 Q360 210 300 214 L110 216 Q46 212 40 170 Z" fill="none" stroke="#1e293b" stroke-width="9" stroke-linejoin="round"/>
+          <g id="lookLabels" font-size="13" fill="#0f172a" font-weight="700"></g>
+        </svg>
+      </div>
+      <div class="btns" id="lookM">
+        <button type="button" data-m="dif" class="on" aria-pressed="true">玻璃繞射式</button>
+        <button type="button" data-m="arr" aria-pressed="false">反射式（Ray-Ban Display）</button>
+        <button type="button" data-m="sic" aria-pressed="false">碳化矽繞射式（Orion）</button>
+      </div>
+      <div class="row"><label for="lookT">斜著看的角度</label><input id="lookT" type="range" min="0" max="45" value="0"><output id="lookTv" for="lookT">0°</output></div>
+      <div class="btns"><button type="button" id="lookL" aria-pressed="true" class="on">顯示零件名稱</button></div>
+      <p class="pk-out" id="lookO" aria-live="polite"></p>
+      <div class="tw"><table class="cmp">
+        <thead><tr><th>比較</th><th>玻璃繞射式</th><th>反射式（Ray-Ban Display）</th><th>碳化矽繞射式（Orion）</th></tr></thead>
+        <tbody>
+          <tr><td>肉眼外觀</td><td>方框（區塊邊界）</td><td>多數角度幾乎看不到，只有第一排鏡子隱約可見</td><td>方框，但淡很多</td></tr>
+          <tr><td>那是什麼</td><td>入口、轉彎、出口三塊光柵區</td><td>埋在玻璃裡的斜放部分反射鏡（二維擴瞳：垂直、水平兩組）</td><td>一樣是三塊光柵區，刻在碳化矽上</td></tr>
+          <tr><td>斜著看</td><td class="warn">泛出彩虹光澤</td><td class="good">沒有彩虹光澤；鏡子只在特定角度隱約可見</td><td class="good">彩虹光澤大幅減少</td></tr>
+          <tr><td>基材折射率</td><td>約 1.8–2.0（高折射率玻璃）</td><td>約 1.5–1.9（玻璃）</td><td class="good">約 2.7</td></tr>
+          <tr><td>全彩</td><td class="warn">常要疊 2–3 層</td><td class="good">容易，色彩均勻</td><td class="good">單層即可</td></tr>
+          <tr><td>代表產品</td><td>HoloLens 2、Magic Leap 2 等</td><td>Meta Ray-Ban Display</td><td>Meta Orion（原型）</td></tr>
+        </tbody>
+      </table></div>
+      <div class="x-notes">
+        <p><b>為什麼反射式幾乎看不見</b>　鏡子是埋在玻璃裡的薄鍍膜，每片只反射約 5% 的光，和周圍玻璃的差異很小（iFixit 拆解形容「多數角度肉眼幾乎看不到」）。Ray-Ban Display 是二維擴瞳：光先經過垂直方向的擴瞳鏡，再經過水平方向的部分反射鏡。業界報導指出第一排鏡子還認得出來，其餘幾乎看不見。實際鏡子數量與排列未公開，圖為示意。</p>
+        <p><b>看實機的小技巧</b>　把眼鏡拿到燈下慢慢轉：繞射式的方框會閃出彩色；Ray-Ban Display 則要找第一排鏡子的位置、換幾個角度才看得到，其餘鏡子幾乎沒有痕跡。</p>
+      </div>
+      <p class="src-note">外觀為教學示意，不代表實際尺寸與位置。看起來明不明顯，和鍍膜、封裝、抗反射膜及光柵設計都有關，各家產品不同。</p>
     </div>
   </details>
   </div>
@@ -7173,6 +7236,76 @@ function loop(now){
   requestAnimationFrame(loop);
 }
 requestAnimationFrame(loop);
+})();
+</script>
+<script>
+/* =================== 02 補充：三種鏡片外觀對照 =================== */
+(function(){
+  var svg=document.getElementById('lookSvg');if(!svg)return;
+  var NS='http://www.w3.org/2000/svg';
+  var dif=document.getElementById('lookDif'),arr=document.getElementById('lookArr');
+  var lines=document.getElementById('lookLines'),glint=document.getElementById('lookGlint');
+  var labels=document.getElementById('lookLabels'),rb=document.getElementById('lookRb');
+  var regs=dif.querySelectorAll('.lk-reg');
+  var tIn=document.getElementById('lookT'),tOut=document.getElementById('lookTv');
+  var out=document.getElementById('lookO'),lBtn=document.getElementById('lookL');
+  var mBtns=document.querySelectorAll('#lookM button');
+  var mode='dif',showLab=true;
+  function el(tag,attrs,parent){var e=document.createElementNS(NS,tag);for(var k in attrs)e.setAttribute(k,attrs[k]);parent.appendChild(e);return e;}
+  var xs=[];for(var x=110;x<=290;x+=30)xs.push(x);
+  xs.forEach(function(x){el('line',{x1:x,y1:46,x2:x-6,y2:196},lines);el('line',{x1:x+1,y1:46,x2:x-5,y2:196},glint);});
+  var LAB={
+    dif:[[334,74,352,50,'入口光柵'],[284,74,262,24,'轉彎光柵'],[167,121,120,206,'出口光柵（畫面出口）']],
+    sic:[[334,74,352,50,'入口光柵'],[284,74,262,24,'轉彎光柵'],[167,121,120,206,'出口光柵（畫面出口）']],
+    arr:[[329,92,352,140,'入光稜鏡'],[300,86,170,24,'第一排鏡子（隱約可見）'],[200,130,150,206,'其餘鏡子（幾乎看不見）']]
+  };
+  var TXT={
+    dif:'<b>看到方框</b>：那是刻了奈米光柵的區域。小圓是入口光柵，梯形負責讓光轉彎並擴大，大方框是出口光柵，畫面從這裡出來。光柵區的表面和旁邊沒刻紋的玻璃不一樣，所以看得出邊界；斜著看時，外界白光被光柵依顏色分開，方框裡會泛出彩虹光澤。',
+    arr:'<b>幾乎看不見</b>：Ray-Ban Display 的鏡子是埋在玻璃裡的部分反射鏡，每片只反射約 5% 的光，鍍膜和黏合面與周圍玻璃差異很小，所以多數角度肉眼看不到，只有靠近入光處的第一排鏡子隱約可見。這種設計沒有光柵，所以不會出現彩虹光澤。（實際鏡子數量與排列未公開，圖為示意）',
+    sic:'<b>方框淡很多</b>：碳化矽一樣是繞射式，所以一樣有入口、轉彎、出口三塊光柵區。差別在折射率高，光柵週期可以做得更細，外界白光大多被撥到眼睛看不到的方向，所以彩虹光澤大幅減少，方框也比較不顯眼，但不是完全看不到。'
+  };
+  function bump(t,c,w){var d=(t-c)/w;return Math.exp(-d*d);}
+  function draw(){
+    var t=+tIn.value;tOut.textContent=t+'°';
+    dif.style.display=(mode==='arr')?'none':'';
+    arr.style.display=(mode==='arr')?'':'none';
+    if(mode!=='arr'){
+      var sic=(mode==='sic');
+      var edge=sic?0.14+t*0.003:0.42+t*0.008;
+      var sheen=sic?0.03+0.1*bump(t,30,12):0.06+0.55*bump(t,30,12);
+      for(var i=0;i<regs.length;i++){
+        regs[i].setAttribute('fill','url(#lookRb)');
+        regs[i].setAttribute('fill-opacity',sheen.toFixed(3));
+        regs[i].setAttribute('stroke','#475569');
+        regs[i].setAttribute('stroke-opacity',Math.min(edge,.9).toFixed(3));
+        regs[i].setAttribute('stroke-width','1.4');
+      }
+      rb.setAttribute('gradientTransform','rotate('+(t*2)+' .5 .5)');
+    }else{
+      lines.setAttribute('stroke-opacity','0.1');
+      glint.setAttribute('stroke-opacity',(0.3*bump(t,22,8)).toFixed(3));
+    }
+    while(labels.firstChild)labels.removeChild(labels.firstChild);
+    if(showLab){
+      LAB[mode].forEach(function(a){
+        el('line',{x1:a[0],y1:a[1],x2:a[2],y2:a[3]+(a[3]<a[1]?4:-12),stroke:'#db2777','stroke-width':1.4},labels);
+        el('circle',{cx:a[0],cy:a[1],r:3,fill:'#db2777'},labels);
+        var tx=el('text',{x:a[2],y:a[3],'text-anchor':a[2]>300?'end':'start',stroke:'#fff','stroke-width':4,'paint-order':'stroke'},labels);
+        tx.textContent=a[4];
+      });
+    }
+    out.innerHTML=TXT[mode];
+  }
+  Array.prototype.forEach.call(mBtns,function(b){
+    b.addEventListener('click',function(){
+      mode=b.getAttribute('data-m');
+      Array.prototype.forEach.call(mBtns,function(o){var on=(o===b);o.classList.toggle('on',on);o.setAttribute('aria-pressed',on?'true':'false');});
+      draw();
+    });
+  });
+  tIn.addEventListener('input',draw);
+  lBtn.addEventListener('click',function(){showLab=!showLab;lBtn.classList.toggle('on',showLab);lBtn.setAttribute('aria-pressed',showLab?'true':'false');draw();});
+  draw();
 })();
 </script>
 </body>
